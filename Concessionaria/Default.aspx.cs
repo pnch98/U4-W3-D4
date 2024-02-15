@@ -43,8 +43,6 @@ namespace Concessionaria
         }
 
 
-        double prezzoBaseVar, absVar, cerchiLegaVar, fariVar, climatizzatoreVar;
-
         protected void SelectedCar(object sender, EventArgs e)
         {
             divDettaglio.Attributes.Remove("class");
@@ -69,13 +67,7 @@ namespace Concessionaria
                         selectedModel.InnerText = reader["modello"].ToString();
                         selectedBasePrice.InnerText = "Prezzo base: " + reader["prezzoBase"].ToString();
 
-                        prezzoBaseVar = Convert.ToDouble(reader["prezzoBase"]);
-                        absVar = Convert.ToDouble(reader["ABS"]);
-                        cerchiLegaVar = Convert.ToDouble(reader["cerchiInLega"]);
-                        fariVar = Convert.ToDouble(reader["fariLED"]);
-                        climatizzatoreVar = Convert.ToDouble(reader["climatizzatore"]);
-
-                        double prezzototale = prezzoBaseVar + (Convert.ToInt16(garanzia.SelectedValue) * 120);
+                        double prezzototale = Convert.ToDouble(reader["prezzoBase"]) + (Convert.ToInt16(garanzia.SelectedValue) * 120);
 
                         string finalString = "Garanzia: " + Convert.ToInt16(garanzia.SelectedValue) * 120 + " | ";
 
