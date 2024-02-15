@@ -114,13 +114,13 @@ namespace Concessionaria
         protected global::System.Web.UI.WebControls.CheckBox fariLED;
 
         /// <summary>
-        /// Controllo Calcola.
+        /// Controllo optionals.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Calcola;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl optionals;
 
         /// <summary>
         /// Controllo prezzoTotaleFinaleUAU.

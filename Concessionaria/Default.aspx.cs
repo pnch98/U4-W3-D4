@@ -74,6 +74,33 @@ namespace Concessionaria
                         cerchiLegaVar = Convert.ToDouble(reader["cerchiInLega"]);
                         fariVar = Convert.ToDouble(reader["fariLED"]);
                         climatizzatoreVar = Convert.ToDouble(reader["climatizzatore"]);
+
+                        double prezzototale = prezzoBaseVar + (Convert.ToInt16(garanzia.SelectedValue) * 120);
+
+                        string finalString = "Garanzia: " + Convert.ToInt16(garanzia.SelectedValue) * 120 + " | ";
+
+                        if (ABS.Checked)
+                        {
+                            prezzototale += Convert.ToDouble(reader["ABS"]);
+                            finalString += "ABS: " + reader["ABS"] + " | ";
+                        }
+                        if (cerchi.Checked)
+                        {
+                            prezzototale += Convert.ToDouble(reader["cerchiInLega"]);
+                            finalString += "Cerchi: " + reader["cerchiInLega"] + " | ";
+                        }
+                        if (fariLED.Checked)
+                        {
+                            prezzototale += Convert.ToDouble(reader["fariLED"]);
+                            finalString += "Fari LED: " + reader["fariLED"] + " | ";
+                        }
+                        if (climatizzatore.Checked)
+                        {
+                            prezzototale += Convert.ToDouble(reader["climatizzatore"]);
+                            finalString += "Climatizzatore: " + reader["climatizzatore"] + " | ";
+                        }
+                        optionals.InnerHtml = finalString;
+                        prezzoTotaleFinaleUAU.InnerText = "Prezzo totale: " + prezzototale.ToString();
                     }
                 }
                 catch (Exception ex)
@@ -82,38 +109,6 @@ namespace Concessionaria
                 }
                 finally { conn.Close(); }
             }
-        }
-
-        protected void CalcolaPrezzo(object sender, EventArgs e)
-        {
-            int anniGaranzia = Convert.ToInt16(garanzia.SelectedValue);
-            bool checkABS = ABS.Checked;
-            bool checkCerchi = cerchi.Checked;
-            bool checkfariLED = fariLED.Checked;
-            bool checkClimatizzatore = climatizzatore.Checked;
-
-            double prezzototale = prezzoBaseVar + (anniGaranzia * 120);
-            if (checkABS)
-            {
-                prezzototale += absVar;
-            }
-
-            if (checkCerchi)
-            {
-                prezzototale += cerchiLegaVar;
-            }
-
-            if (checkfariLED)
-            {
-                prezzototale += fariVar;
-            }
-
-            if (checkClimatizzatore)
-            {
-                prezzototale += climatizzatoreVar;
-            }
-            Response.Write(prezzoBaseVar);
-            prezzoTotaleFinaleUAU.InnerText = prezzototale.ToString();
         }
     }
 }

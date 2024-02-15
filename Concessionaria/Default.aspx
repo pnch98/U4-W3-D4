@@ -8,9 +8,12 @@
         </asp:DropDownList>
         <asp:Button ID="Button1" class="btn btn-primary mt-2 mb-3" runat="server" Text="Dettagli" OnClick="SelectedCar" />
         <div id="divDettaglio" class="d-none" runat="server">
-            <img id="selectedImg" runat="server" height="400"/>
+            <img id="selectedImg" runat="server" height="400" />
             <p id="selectedModel" class="fs-2 mb-0" runat="server"></p>
             <p id="selectedBasePrice" runat="server"></p>
+        </div>
+        <div class="d-flex flex-column align-items-start">
+            <div>
             <span>Garanzia: </span>
             <asp:DropDownList ID="garanzia" runat="server">
                 <asp:ListItem Value="2">2 anni</asp:ListItem>
@@ -18,6 +21,7 @@
                 <asp:ListItem Value="4">4 anni</asp:ListItem>
                 <asp:ListItem Value="5">5 anni</asp:ListItem>
             </asp:DropDownList>
+            </div>
             <div class="d-flex flex-column">
                 <div>
                     <span>Climatizzatore </span>
@@ -36,7 +40,7 @@
                     <asp:CheckBox ID="fariLED" runat="server" />
                 </div>
             </div>
-            <asp:Button ID="Calcola" runat="server" Text="Calcola Prezzo" OnClick="CalcolaPrezzo" OnClientClick="return false"/>
+            <small id="optionals" runat="server"></small>
             <p id="prezzoTotaleFinaleUAU" class="display-5" runat="server"></p>
         </div>
     </main>
